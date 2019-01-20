@@ -17,9 +17,21 @@ public class CollectionTestSuite {
     public void after(){
         System.out.println("Test Case: end");
     }
+    @Test
+    public void testOddNumbersExterminatorEmptyList(){
+        //Given
+        ArrayList<Integer> list = new ArrayList<>();
+        OddNumbersExterminator numbers = new OddNumbersExterminator();
+        //When
+        System.out.println("Testing OddNumbersExtreminator Clas when the list is empty");
+        numbers.exterminate(list);
+        //Then
+        Assert.assertEquals(0,list.size());
+
+    }
 
     @Test
-    public void testCaseExterminate(){
+    public void testOddNumbersExterminatorNormalList(){
         // Given
         ArrayList<Integer> list = new ArrayList<Integer>();
         for(int i = 0 ; i < 10 ; i++){
