@@ -1,9 +1,16 @@
 package com.kodilla.testing;
 
-import com.kodilla.testing.calculator.Calculator;
+
+
 
 public class TestingMain {
-    public static void main (String[] args){
+    public static void main(String[] args) {
+
+
+
+
+        /*   ROZDZIAL 6.1
+
 
      ////// Test Klasy Calculator
 
@@ -39,5 +46,8 @@ public class TestingMain {
         }
 
 
+    }
+                KONIEC RODZIALU
+    */
     }
 }
