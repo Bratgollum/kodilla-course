@@ -14,26 +14,30 @@ public class StatisticCounterTestSuite<i> {
     private static int testCounter = 0;
 
     @BeforeClass
-    public static void beforeAllTests(){
+    public static void beforeAllTests() {
         System.out.println("That's the begining of tests");
     }
+
     @AfterClass
-    public static void afterAllTests(){
+    public static void afterAllTests() {
         System.out.println("All tests are finished ");
     }
+
     @Before
-    public void beforeEveryTest(){
+    public void beforeEveryTest() {
         testCounter++;
-        System.out.println("Preparing to execute test #"+testCounter);
+        System.out.println("Preparing to execute test #" + testCounter);
     }
+
     @After
-    public void afterEveryTest(){
-        System.out.println("Test #"+testCounter +" finished ");
+    public void afterEveryTest() {
+        System.out.println("Test #" + testCounter + " finished \n");
     }
 
     @Test
     public void testCalculateAdvStatisticNr1() {
         //Given
+
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> listNames = new ArrayList<String>();
         for (int i = 0; i < 100; i++) {
@@ -43,22 +47,39 @@ public class StatisticCounterTestSuite<i> {
         when(statisticsMock.commentsCount()).thenReturn(700);
         when(statisticsMock.postsCount()).thenReturn(1000);
 
-
+        int avaPostPerUser = statisticsMock.postsCount() / statisticsMock.userNames().size();
+        int avgCommentsPerUser = statisticsMock.commentsCount() / statisticsMock.userNames().size();
+        int avgCommentsPerPost = statisticsMock.commentsCount() / statisticsMock.postsCount();
 
         StatisticsCounter statisticsCounter = new StatisticsCounter(statisticsMock);
+
         //When
         statisticsCounter.calculateAdvStatistic(statisticsMock);
+
         //Then
-        Assert.assertEquals(700,statisticsCounter.getNumberOfComments());
-        Assert.assertEquals(1000,statisticsCounter.getNumberOfPosts());
-        Assert.assertEquals(100,statisticsCounter.getNumberOfUsers());
-        Assert.assertEquals(statisticsMock.postsCount()/statisticsMock.userNames().size(),statisticsCounter.getAvgPostsPerUser());
-        Assert.assertEquals(statisticsMock.commentsCount()/statisticsMock.userNames().size(),statisticsCounter.getAvgCommentsPerUser());
-        Assert.assertEquals(statisticsMock.commentsCount()/statisticsMock.postsCount(),statisticsCounter.getAvgCommentsPerPost());
+
+        //Testing exoected numbers  of Comments , Post , User
+        System.out.println("Case :"+testCounter+
+                "\nNUMBER OF USERS - "+listNames.size() +"\nNUMBER OF COMMENTS - "+statisticsMock.commentsCount()+
+                "\nNUMBER OF POSTS - "+statisticsMock.postsCount());
+        Assert.assertEquals(700, statisticsCounter.getNumberOfComments());
+        Assert.assertEquals(1000, statisticsCounter.getNumberOfPosts());
+        Assert.assertEquals(100, statisticsCounter.getNumberOfUsers());
+        //Testing avarage statistic :
+        //Post per User
+        //Comments per User
+        //Comments per Post
+        System.out.println("AVARAGE POST PER USER - " + avaPostPerUser + "\nAVARAGE COMMENTS PER USER - " + avgCommentsPerUser +
+                "\nAVARAGE COMMENTS PER POST - " + avgCommentsPerPost);
+        Assert.assertEquals(avaPostPerUser, statisticsCounter.getAvgPostsPerUser());
+        Assert.assertEquals(avgCommentsPerUser, statisticsCounter.getAvgCommentsPerUser());
+        Assert.assertEquals(avgCommentsPerPost, statisticsCounter.getAvgCommentsPerPost());
     }
+
     @Test
     public void testCalculateAdvStatisticNr2() {
         //Given
+
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> listNames = new ArrayList<String>();
         for (int i = 0; i < 10; i++) {
@@ -66,46 +87,35 @@ public class StatisticCounterTestSuite<i> {
         }
         when(statisticsMock.userNames()).thenReturn(listNames);
         when(statisticsMock.commentsCount()).thenReturn(0);
-        when(statisticsMock.postsCount()).thenReturn(0);
-
-
-
-        StatisticsCounter statisticsCounter = new StatisticsCounter(statisticsMock);
-        //When
-        statisticsCounter.calculateAdvStatistic(statisticsMock);
-        //Then
-        Assert.assertEquals(0,statisticsCounter.getNumberOfComments());
-        Assert.assertEquals(0,statisticsCounter.getNumberOfPosts());
-        Assert.assertEquals(10,statisticsCounter.getNumberOfUsers());
-        Assert.assertEquals(0,statisticsCounter.getAvgPostsPerUser());
-        Assert.assertEquals(0,statisticsCounter.getAvgCommentsPerUser());
-        Assert.assertEquals(0,statisticsCounter.getAvgCommentsPerPost());
-    }
-    @Test
-    public void testShowStatistic() {
-        //Given
-        Statistics statisticsMock = mock(Statistics.class);
-        ArrayList<String> listNames = new ArrayList<String>();
-        for (int i = 0; i < 100; i++) {
-            listNames.add("name");
-        }
-        when(statisticsMock.userNames()).thenReturn(listNames);
-        when(statisticsMock.commentsCount()).thenReturn(700);
         when(statisticsMock.postsCount()).thenReturn(1000);
 
+        int avaPostPerUser = statisticsMock.postsCount() / statisticsMock.userNames().size();
+        int avgCommentsPerUser = statisticsMock.commentsCount() / statisticsMock.userNames().size();
+        int avgCommentsPerPost = statisticsMock.commentsCount() / statisticsMock.postsCount();
+
         StatisticsCounter statisticsCounter = new StatisticsCounter(statisticsMock);
+
         //When
-        statisticsCounter.showStatistics();
+        statisticsCounter.calculateAdvStatistic(statisticsMock);
+
         //Then
-        Assert.assertEquals( "Statistics :\n"+
-                "{ numberOfUsers= " + statisticsCounter.getNumberOfUsers()+
-                ", numberOfPosts= " + statisticsCounter.getNumberOfPosts() +
-                ", numberOfComments= " + statisticsCounter.getNumberOfComments() +
-                ", avgPostsPerUser= " + statisticsCounter.getAvgPostsPerUser()+
-                ", avgCommentsPerUser =" + statisticsCounter.getAvgCommentsPerUser() +
-                ", avgCommentsPerPost =" + statisticsCounter.getAvgCommentsPerPost() +
-                "}",statisticsCounter.showStatistics());
 
+        //Testing exoected numbers  of Comments , Post , User
+        System.out.println("Case :"+testCounter+
+                   "\nNUMBER OF USERS - "+listNames.size() +"\nNUMBER OF COMMENTS - "+statisticsMock.commentsCount()+
+                   "\nNUMBER OF POSTS - "+statisticsMock.postsCount());
+        Assert.assertEquals(0, statisticsCounter.getNumberOfComments());
+        Assert.assertEquals(1000, statisticsCounter.getNumberOfPosts());
+        Assert.assertEquals(10, statisticsCounter.getNumberOfUsers());
+
+        //Testing avarage statistic :
+        //Post per User
+        //Comments per User
+        //Comments per Post
+        System.out.println("AVARAGE POST PER USER - " + avaPostPerUser + "\nAVARAGE COMMENTS PER USER - " + avgCommentsPerUser +
+                "\nAVARAGE COMMENTS PER POST - " + avgCommentsPerPost);
+        Assert.assertEquals(avaPostPerUser, statisticsCounter.getAvgPostsPerUser());
+        Assert.assertEquals(avgCommentsPerUser, statisticsCounter.getAvgCommentsPerUser());
+        Assert.assertEquals(avgCommentsPerPost, statisticsCounter.getAvgCommentsPerPost());
     }
-
 }
