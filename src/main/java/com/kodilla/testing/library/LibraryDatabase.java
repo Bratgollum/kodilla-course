@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface LibraryDatabase {
     //lists books having title beginning with titleFragment
-    List<Book> listBooksWithCOndition(String titleFragment);
+    List<Book> listBooksWithCondition(String titleFragment);
 
     //list books borrowed by libraryUser
     List<Book> listBooksInHandsOf(LibaryUser libaryUser);
