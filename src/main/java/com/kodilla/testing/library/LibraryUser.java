@@ -2,17 +2,17 @@ package com.kodilla.testing.library;
 
 import java.util.Objects;
 
-public class LibaryUser {
+public class LibraryUser {
     String firstName;
     String lastName;
     String peselId;
 
-
-    public LibaryUser(String firstName, String lastName, String peselId) {
+    public LibraryUser(String firstName, String lastName, String peselId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.peselId = peselId;
     }
+
     public String getFirstName() {
         return firstName;
     }
@@ -25,13 +25,11 @@ public class LibaryUser {
         return peselId;
     }
 
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof LibaryUser)) return false;
-        LibaryUser that = (LibaryUser) o;
+        if (!(o instanceof LibraryUser)) return false;
+        LibraryUser that = (LibraryUser) o;
         return Objects.equals(firstName, that.firstName) &&
                 Objects.equals(lastName, that.lastName) &&
                 Objects.equals(peselId, that.peselId);
