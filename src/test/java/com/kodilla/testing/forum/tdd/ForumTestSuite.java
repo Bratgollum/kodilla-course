@@ -61,19 +61,19 @@ public class ForumTestSuite {
         Assert.assertEquals(thePost,retrivedPost);
     }
 
-    @Test
-    public void testGetComment() {
-        //Given
-        ForumUser forumUser = new ForumUser("mrsmith","John Smith");
-        ForumPost thePost = new ForumPost("Hello everyone ," +
-                "this is my first contribution here !","mrsmith");
-        ForumComment theComment = new ForumComment(thePost,"mrsmith","Thank you for all good words!");
-        forumUser.addComment(thePost, theComment.getAuthor(),theComment.getCommentBody());
-        //When
-        ForumComment retrivedComment = forumUser.getComment(0);
-        //Then
-        Assert.assertEquals(theComment, retrivedComment);
-    }
+//    @Test
+//    public void testGetComment() {
+//        //Given
+//        ForumUser forumUser = new ForumUser("mrsmith","John Smith");
+//        ForumPost thePost = new ForumPost("Hello everyone ," +
+//                "this is my first contribution here !","mrsmith");
+//        ForumComment theComment = new ForumComment(thePost,"mrsmith","Thank you for all good words!");
+//        forumUser.addComment(thePost, theComment.getAuthor(),theComment.getCommentBody());
+//        //When
+//        ForumComment retrivedComment = forumUser.getComment(0);
+//        //Then
+//        Assert.assertEquals(theComment, retrivedComment);
+//    }
 
     @Test
     public void testRemovePostNotExisting() {
@@ -120,20 +120,20 @@ public class ForumTestSuite {
 
     }
 
-    @Test
-    public void testRemoveComment() {
-        //Given
-        ForumUser forumUser = new ForumUser("mrsmith","John Smith");
-        ForumPost thePost = new ForumPost("Hello everyone ," +
-                "this is my first contribution here !","mrsmith");
-        ForumComment theComment = new ForumComment(thePost,"mrsmith","Thank you for all good words!");
-        forumUser.addComment(thePost, theComment.getAuthor(),theComment.getCommentBody());
-
-        //When
-        boolean result = forumUser.removeComment(theComment);
-
-        //Then
-        Assert.assertTrue(result);
-        Assert.assertEquals(0,forumUser.getCommentsQuantity());
-    }
+//    @Test
+//    public void testRemoveComment() {
+//        //Given
+//        ForumUser forumUser = new ForumUser("mrsmith","John Smith");
+//        ForumPost thePost = new ForumPost("Hello everyone ," +
+//                "this is my first contribution here !","mrsmith");
+//        ForumComment theComment = new ForumComment(thePost,"mrsmith","Thank you for all good words!");
+//        forumUser.addComment(thePost, theComment.getAuthor(),theComment.getCommentBody());
+//
+//        //When
+//        boolean result = forumUser.removeComment(theComment);
+//
+//        //Then
+//        Assert.assertTrue(result);
+//        Assert.assertEquals(0,forumUser.getCommentsQuantity());
+//    }
 }
