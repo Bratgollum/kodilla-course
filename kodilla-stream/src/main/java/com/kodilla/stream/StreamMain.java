@@ -4,6 +4,8 @@ import com.kodilla.stream.book.Book;
 import com.kodilla.stream.forumuser.Forum;
 import com.kodilla.stream.forumuser.ForumUser;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -15,7 +17,7 @@ public class StreamMain {
         Forum theForum = new Forum();
         Map<Integer, ForumUser> theResultMapOfTheForumUsers = theForum.getUserList().stream()
                 .filter(forumUser -> forumUser.getGender() !='F' )
-                .filter(forumUser -> forumUser.getUserBirthDate().getYear() < 1999)
+                .filter(forumUser -> Period.between(forumUser.getUserBirthDate(),LocalDate.now()).getYears() > 20)
                 .filter(forumUser -> forumUser.getNumberOfPosts() > 1)
                 .collect(Collectors.toMap(ForumUser::getIdUser, forumUser -> forumUser));
         System.out.println("# Number Of ForumUsers : " + theResultMapOfTheForumUsers.size());
@@ -24,6 +26,7 @@ public class StreamMain {
                      + ", Age - "+ (2019 - entry.getValue().getUserBirthDate().getYear())
                      + ", Number Of Posts - "+ entry.getValue().getNumberOfPosts())
                 .forEach(System.out::println);
+
 
       ////////////////////////////// Zadania Modul 7 ////////////////////////////////////////////////////
 
