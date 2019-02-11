@@ -8,12 +8,12 @@ public class ArrayOperationsTestSuite {
     @Test
     public void testGetAvaraghe() {
         //Given
-        int i = 1;
+
         int[] numbers = new int[20];
         for (int n = 0; n < 20; n++) {
 
-            numbers[n] = i;
-            i++;
+            numbers[n] = n+1;
+
 
         }
         //when
