@@ -128,9 +128,17 @@ public class BoardTestSuite {
 
 
 
+        int sum = IntStream.range(0,inProgressTasks.size())
+                .map( n -> Period.between(inProgressTasks.get(n).getTasks().get(n).getCreated(),LocalDate.now()).getDays())
+                .sum();
 
 
-        int sumOfDaysGone = IntStream.range(0,inProgressTasks.size())
+
+
+
+
+
+     /*   int sumOfDaysGone = IntStream.range(0,inProgressTasks.size())
                             .filter(n -> inProgressTasks.stream().filter(t ->t.getTasks().stream()
                                     .filter(task -> task.getDaysGoneAfterDeadline())))
                                     .sum();
@@ -146,7 +154,7 @@ public class BoardTestSuite {
                 .flatMap(tl -> tl.getTasks().stream())
                 .filter(task -> Period.between(task.getCreated(),LocalDate.now()).getDays() > 0)
                 .map(t -> t.getDaysPast());
-
+*/
 
 
 
