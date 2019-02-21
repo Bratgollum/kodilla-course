@@ -120,47 +120,30 @@ public class BoardTestSuite {
 
     @Test
     public void testAddTaskListAvarageWorkingTask() {
+        //Given
         Board project = prepareTestData();
 
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
 
-
-
-        int sum = IntStream.range(0,inProgressTasks.size())
-                .map( n -> Period.between(inProgressTasks.get(n).getTasks().get(n).getCreated(),LocalDate.now()).getDays())
-                .sum();
-
-
-
-
-
-
-
-     /*   int sumOfDaysGone = IntStream.range(0,inProgressTasks.size())
-                            .filter(n -> inProgressTasks.stream().filter(t ->t.getTasks().stream()
-                                    .filter(task -> task.getDaysGoneAfterDeadline())))
-                                    .sum();
-        int sumOfDaysGone = IntStream.range(0,inProgressTasks.size())
-                             .filter(n -> inProgressTasks.stream().filter(t1 -> t1.getTasks().stream()
-                                      .filter(task -> Period.between(task.getCreated(),LocalDate.now()).getDays() > 0)))
-                             .map(n -> 1)
-                             .sum();
-
-           ///////////
-          project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
+         double  avgNumberOfDaysLeftforTask =    project.getTaskLists().stream()
+               .filter(inProgressTasks::contains)
+                .flatMap(task -> task.getTasks().stream())
                 .filter(task -> Period.between(task.getCreated(),LocalDate.now()).getDays() > 0)
-                .map(t -> t.getDaysPast());
-*/
+                .mapToDouble(t -> t.getDaysPast())
+                .average().getAsDouble();
 
+               // Addition stream to see if I have the right amount of Tasks in progress and days so its just esier to predict the result
+               project.getTaskLists().stream()
+                       .filter(inProgressTasks::contains)
+                       .flatMap(taskList -> taskList.getTasks().stream())
+                       .filter(task -> Period.between(task.getCreated(),LocalDate.now()).getDays() >0)
+                       .map(task -> task.getDaysPast())
+                       .forEach(System.out::println);
 
-
-
-
-
+               //Then
+               Assert.assertEquals(25.0 , avgNumberOfDaysLeftforTask, 0.01 );
 
 
 
