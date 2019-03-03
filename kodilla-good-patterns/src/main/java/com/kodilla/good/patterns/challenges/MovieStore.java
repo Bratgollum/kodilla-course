@@ -2,6 +2,8 @@ package com.kodilla.good.patterns.challenges;
 
 import java.util.List;
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 class MovieStore {
 
@@ -31,11 +33,20 @@ class MovieStore {
     public static void main( String[] args ){
 
         MovieStore movieStore = new MovieStore();
-        Map<String, List<String>> listTitles = new HashMap<>();
-            listTitles.putAll(movieStore.getMovies());
-        for(Map.Entry<String,List<String>> list : listTitles.entrySet()){
-                list.getValue().stream().forEach(n -> {System.out.print(n+ "! ");});
+       /* Map<String, List<String>> listTitles = new HashMap<>();
+            listTitles.putAll(movieStore.getMovies());*/
+        /*for(Map.Entry<String,List<String>> list : listTitles.entrySet()){
+                list.getValue().stream().forEach(n -> {System.out.print(n+ "! ");});*/
+
+
+      String name =  movieStore.getMovies().entrySet().stream()
+               .flatMap( n-> n.getValue().stream())
+               .collect(Collectors.joining("! "));
+
+      System.out.print(name);
+
+
         }
     }
-    }
+
 
