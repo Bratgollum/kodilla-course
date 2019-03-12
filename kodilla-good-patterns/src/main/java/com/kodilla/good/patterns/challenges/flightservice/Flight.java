@@ -21,14 +21,6 @@ public class Flight {
         this.arrivalTime = arrivalTime;
     }
 
-    public Flight(String flightFrom, String flightTo, boolean directFlight, String departureTime, String arrivalTime) {
-        this.flightFrom = flightFrom;
-        this.flightTo = flightTo;
-        this.directFlight = directFlight;
-        this.departureTime = departureTime;
-        this.arrivalTime = arrivalTime;
-    }
-
 
 
     public String getFlightFrom() {
