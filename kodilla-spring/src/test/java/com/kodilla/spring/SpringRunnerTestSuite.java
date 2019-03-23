@@ -1,8 +1,6 @@
 package com.kodilla.spring;
 
-import com.kodilla.spring.shape.Circle;
-import com.kodilla.spring.shape.Shape;
-import com.kodilla.spring.shape.Tringle;
+import com.kodilla.spring.shape.*;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,6 +42,32 @@ public class SpringRunnerTestSuite {
         String name = shape.getShapeName();
         //Then
         Assert.assertEquals("This is Tringle" , name);
+
+    }
+
+    @Test
+    public void testSquareLoadedIntoContainer(){
+        //Given
+        ApplicationContext context =
+                    new AnnotationConfigApplicationContext("com.kodilla.spring.shape");
+        Shape shape = context.getBean(Square.class);
+        //When
+        String name = shape.getShapeName();
+        //Then
+        Assert.assertEquals("This is Square", name);
+    }
+    @Test
+    public void testShapeLoadedIntoContainer(){
+        //Given
+        ApplicationContext context =
+                   new AnnotationConfigApplicationContext("com.kodilla.spring.shape");
+        Shape shape = (Shape)context.getBean("chosenShape");
+        ShapesFactory shapesFactory = new ShapesFactory();
+        //When
+        String name = shape.getShapeName();
+
+        Assert.assertEquals(shapesFactory , name);
+        System.out.println(name + " , "+ shapesFactory);
 
     }
 
