@@ -3,13 +3,18 @@ package com.kodilla.patterns.strategy.social;
 import com.kodilla.patterns.strategy.social.media.SnapchatPublisher;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class UserTestSuite {
+    private static int counter = 0;
+    @Before
+    public void beforeEachTest(){
+        counter++;
+        System.out.println("Test nr. "+counter+" begin");
+    }
 
-    @BeforeClass
-    System.out.println("Test nr.");
+
+
     @Test
     public void testDefaultSharingStrategies(){
         //Given
