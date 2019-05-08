@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="prototype.library.LibraryTestSuite" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-05-08T09:26:14" hostname="DESKTOP-UB8B4SG" time="0.018">
+  <properties/>
+  <testcase name="testGetBooks" classname="prototype.library.LibraryTestSuite" time="0.018"/>
+  <system-out><![CDATA[Library Library number 1 
+[    Book nr 2
+,     Numbere 11
+,     Book nr 6
+,     Book nr 8
+,     Book nr 10
+,     Book nr 7
+,     Book nr 1
+,     Book nr 9
+,     Book nr 3
+,     Book nr 4
+,     Book nr 5
+]
+Library Library number 2 
+[    Book nr 2
+,     Numbere 11
+,     Book nr 6
+,     Book nr 8
+,     Book nr 10
+,     Book nr 7
+,     Book nr 1
+,     Book nr 9
+,     Book nr 3
+,     Book nr 4
+,     Book nr 5
+]
+Library Library number 3
+[    Book nr 9
+,     Book nr 8
+,     Book nr 1
+,     Book nr 10
+,     Book nr 6
+,     Book nr 5
+,     Book nr 7
+,     Book nr 3
+,     Book nr 4
+,     Book nr 2
+]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

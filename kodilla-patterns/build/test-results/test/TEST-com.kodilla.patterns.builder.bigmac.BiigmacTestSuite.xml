@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kodilla.patterns.builder.bigmac.BiigmacTestSuite" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-05-08T09:26:14" hostname="DESKTOP-UB8B4SG" time="0.007">
+  <properties/>
+  <testcase name="testBigmacNew" classname="com.kodilla.patterns.builder.bigmac.BiigmacTestSuite" time="0.007"/>
+  <system-out><![CDATA[Bicmac: 
+Is bum with sesam = true
+Number of steaks inside a burger = 4
+Ingredients = [Salat, Onion, Cheese]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

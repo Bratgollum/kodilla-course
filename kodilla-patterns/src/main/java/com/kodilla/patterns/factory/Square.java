@@ -10,7 +10,7 @@ public class Square implements Shape{
     }
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
