@@ -7,12 +7,12 @@ import javax.validation.constraints.NotNull;
 @Table(name="TASKLIST")
 public class TaskList {
     private int id;
-    private String taskList;
+    private String listName;
     private String description;
 
     public TaskList(int id, String taskList, String description) {
         this.id = id;
-        this.taskList = taskList;
+        this.listName = taskList;
         this.description = description;
     }
 
@@ -20,6 +20,7 @@ public class TaskList {
 
     }
 
+    
     @Id
     @GeneratedValue
     @NotNull
@@ -33,11 +34,11 @@ public class TaskList {
     }
     @Column(name="LISTNAME")
     public String getTaskList() {
-        return taskList;
+        return listName;
     }
 
     public void setTaskList(String taskList) {
-        this.taskList = taskList;
+        this.listName = taskList;
     }
     @Column(name="DESCRIPTION")
     public String getDescription() {
