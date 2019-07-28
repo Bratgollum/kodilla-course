@@ -37,12 +37,13 @@ public class TaskList {
     public void setId(int id) {
         this.id = id;
     }
+
     @Column(name="LISTNAME")
-    public String getTaskList() {
+    public String getListName() {
         return listName;
     }
 
-    public void setTaskList(String listName) {
+    public void setListName(String listName) {
         this.listName = listName;
     }
     @Column(name="DESCRIPTION")

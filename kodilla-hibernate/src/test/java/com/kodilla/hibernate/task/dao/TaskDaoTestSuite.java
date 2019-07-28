@@ -2,6 +2,7 @@ package com.kodilla.hibernate.task.dao;
 
 import com.kodilla.hibernate.task.Task;
 import com.kodilla.hibernate.task.TaskFinancialDetails;
+import com.kodilla.hibernate.tasklist.TaskList;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +24,7 @@ public class TaskDaoTestSuite {
     @Test
     public void testTaskDaoSave() {
         //Given
+        //TaskList taskList = new TaskList();
         Task task = new Task(DESCRIPTION, 7);
 
         //When
@@ -40,9 +42,10 @@ public class TaskDaoTestSuite {
     @Test
     public void testTaskDaoSaveWithFinancialDetails() {
         //Given
+
         Task task = new Task(DESCRIPTION, 30);
         task.setTaskFinancialDetails(new TaskFinancialDetails(new BigDecimal(120), false));
-
+        TaskList taskList = new TaskList();
         //When
         taskDao.save(task);
         int id = task.getId();

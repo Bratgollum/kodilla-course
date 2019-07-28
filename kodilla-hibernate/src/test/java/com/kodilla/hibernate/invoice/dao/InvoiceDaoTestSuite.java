@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.slf4j.Logger;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -33,15 +34,17 @@ public class InvoiceDaoTestSuite {
 
     @Before
     public void beforeTest(){
-       product01 = new Product("Shirt01");
-       product02 = new Product("Scarf01");
-       item01 = new Item(product01,new BigDecimal(20), 3, new BigDecimal(300));
-       item02 = new Item(product02, new BigDecimal(30),4,new BigDecimal(230));
+        invoice = new Invoice("10");
+        product01 = new Product("Shirt01");
+        product02 = new Product("Scarf01");
+        item01 = new Item(product01,invoice,new BigDecimal(20), 3, new BigDecimal(300));
+        item02 = new Item(product02,invoice, new BigDecimal(30),4,new BigDecimal(230));
     }
+    @Transactional
     @Test
     public void testInvoiceDaoSave(){
         //Given
-        invoice = new Invoice();
+
         invoice.getItems().add(item01);
         invoice.getItems().add(item02);
         //When
