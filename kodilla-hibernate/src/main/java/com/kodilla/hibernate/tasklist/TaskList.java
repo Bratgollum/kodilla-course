@@ -21,6 +21,11 @@ public class TaskList {
         this.description = description;
     }
 
+    public TaskList(String listName, String description){
+        this.listName = listName;
+        this.description = description;
+    }
+
     public TaskList(){
 
     }
