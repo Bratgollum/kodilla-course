@@ -8,8 +8,8 @@ import java.util.List;
 
 @NamedNativeQuery(
         name = "Company.retrieveCompanyByGivenCharacter",
-        query = "SELECT * FROM COMPANY" +
-                " WHERE SUBSTRING (company_name,1,3) = :FIRSTTHREE",
+        query = "SELECT * FROM companies" +
+                " WHERE SUBSTRING(COMPANY_NAME,1,3) = :FIRSTTHREE",
         resultClass = Company.class
 )
 
