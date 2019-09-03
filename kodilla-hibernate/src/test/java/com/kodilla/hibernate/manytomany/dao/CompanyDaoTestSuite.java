@@ -26,11 +26,11 @@ public class CompanyDaoTestSuite {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CompanyDaoTestSuite.class);
 
-    @Before
+   /* @Before
     public void clean(){
         employeeDao.deleteAll();
         companyDao.deleteAll();
-    }
+    }*/
 
     @Transactional
     @Test
@@ -102,10 +102,10 @@ public class CompanyDaoTestSuite {
         employeeDao.save(lindaKovalsky);
         //When
         List<Employee> name = employeeDao.retrieveEmployeeByLastName("Smith");
-        List<Company> nameCompany = companyDao.retrieveCompanyByGivenCharacter("Software");
+        List<Company> nameCompany = companyDao.retrieveCompanyByGivenCharacter("Sof");
         //Then
-                Assert.assertEquals(1, nameCompany.size());
-                Assert.assertEquals(1, name.size());
+             Assert.assertEquals(1, nameCompany.size());
+             Assert.assertEquals(1, name.size());
     }
 
 }

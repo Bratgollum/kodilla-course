@@ -13,6 +13,7 @@ import java.util.List;
         resultClass = Company.class
 )
 
+
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
@@ -36,17 +37,14 @@ public class Company {
     public int getId() {
         return id;
     }
-
+    private void setId(int id) {
+        this.id = id;
+    }
     @NotNull
     @Column(name = "COMPANY_NAME")
     public String getName() {
         return name;
     }
-
-    private void setId(int id) {
-        this.id = id;
-    }
-
     private void setName(String name) {
         this.name = name;
     }
